@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼색이맵</title>
+    <style>
+		@font-face {
+			font-family: 'Cafe24Ssurround';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		*{
+			font-family: Cafe24Ssurround;
+		}
+
+		body{
+			margin: 0;
+		}
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+
+        #logo {
+            width: 45px; 
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
+			border-radius: 15px;
+			margin-right: 6px;
+        }
+
+
+        h1 {
+            display: inline-block;
+            margin: 0;
+            vertical-align: middle; 
+        }
+
+        #map {
+            width: 100%;
+            height: 80vh;
+        }
+
+
+        #reportButton {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            background-color: #ff81f4;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #reportButton:hover {
+            background-color: #7305a7;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img src="./logo.jpg" alt="로고" id="logo">
+    <h1>삼색이맵</h1>
+</header>
+<div id="map"></div>
+<a href="https://forms.gle/hL1zSxwpf6m8BfBG7" id="reportButton">제보하기</a>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ffd2ac7b29fac35b9b16093d455e0f4"></script>
+<script>
+    var mapContainer = document.getElementById('map'); 
+
+
+    var mapOption = { 
+        center: new kakao.maps.LatLng(37.459257, 127.128795), 
+        level: 3 
+    };
+
+
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+    var positions = [
+        {
+            latlng: new kakao.maps.LatLng(37.460862, 127.129629),
+            content: '<div style="padding:5px;">04/18<br>10호관 샛길</div>'
+        },
+        {
+            latlng: new kakao.maps.LatLng(37.458012, 127.127756),
+            content: '<div style="padding:5px;">03/18<br>기숙사 근처</div>'
+        }
+    ];
+
+
+    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'; 
+    var imageSize = new kakao.maps.Size(24, 35); 
+
+
+    for (var i = 0; i < positions.length; i++) {
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: positions[i].latlng,
+            image: new kakao.maps.MarkerImage(imageSrc, imageSize)
+        });
+
+
+        var infowindow = new kakao.maps.InfoWindow({
+            content: positions[i].content,
+        });
+
+
+        kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+    }
+
+
+    function makeClickListener(map, marker, infowindow) {
+        return function() {
+            infowindow.open(map, marker);
+        };
+    }
+</script>
+
+</body>
+</html>
+
