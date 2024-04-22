@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="kr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon.jpg" type="image/x-icon">
     <title>삼색이맵</title>
     <style>
 		@font-face {
@@ -15,6 +16,18 @@
 		*{
 			font-family: Cafe24Ssurround;
 		}
+
+        .no-drag {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            opacity: 0;
+            animation: fadeIn 1s ease; 
+        }
 
 		body{
 			margin: 0;
@@ -73,7 +86,7 @@
 
 
 
-<body>
+<body class="no-drag">
 <header>
     <img src="./logo.jpg" alt="로고" id="logo">
     <h1>삼색이맵</h1>
