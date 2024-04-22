@@ -50,12 +50,15 @@
             height: 85vh;
         }
 
-        .marker-content {
-            padding: 5px;
-            background-color: #f2f2f2;
-            border: 1px solid #ccc;
-            border-radius: 15px;
+        .info-title {
+            display: block;
+            background: #50627F;
+            color: #fff;
             text-align: center;
+            height: 24px;
+            line-height:22px;
+            border-radius:4px;
+            padding:0px 10px;
         }
 
         /* 제보하기 버튼 스타일 */
@@ -106,11 +109,11 @@
     var positions = [
         {
             latlng: new kakao.maps.LatLng(37.460862, 127.129629),
-            content: '<div class="marker-content">04/18<br>10호관 샛길</div>'
+            content: '<span class="info-title">04/18<br>10호관 샛길</span>'
         },
         {
             latlng: new kakao.maps.LatLng(37.458012, 127.127756),
-            content: '<div class="marker-content">03/18<br>기숙사 근처</div>'
+            content: '<span class="info-title">03/18<br>기숙사 근처</span>'
         }
     ];
 
