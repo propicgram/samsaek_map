@@ -55,10 +55,7 @@
             background: #50627F;
             color: #fff;
             text-align: center;
-            height: 24px;
-            line-height:22px;
-            border-radius:4px;
-            padding:0px 10px;
+            border-radius:10px;
         }
 
         /* 제보하기 버튼 스타일 */
@@ -144,19 +141,6 @@
             infowindow.open(map, marker);
         };
     }
-
-    var infoTitle = document.querySelectorAll('.info-title');
-    infoTitle.forEach(function(e) {
-        var w = e.offsetWidth + 10;
-        var ml = w/2;
-        e.parentElement.style.top = "82px";
-        e.parentElement.style.left = "50%";
-        e.parentElement.style.marginLeft = -ml+"px";
-        e.parentElement.style.width = w+"px";
-        e.parentElement.previousSibling.style.display = "none";
-        e.parentElement.parentElement.style.border = "0px";
-        e.parentElement.parentElement.style.background = "unset";
-    });
 
 </script>
 </body>
