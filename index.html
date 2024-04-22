@@ -70,6 +70,9 @@
 
     </style>
 </head>
+
+
+
 <body>
 <header>
     <img src="./logo.jpg" alt="로고" id="logo">
@@ -103,9 +106,9 @@
         }
     ];
 
-    // 마커 이미지 설정
-    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'; 
-    var imageSize = new kakao.maps.Size(24, 35); 
+    // 마커 이미지 설정 (🐈 이모지)
+    var imageSrc = 'data:image/svg+xml;charset=UTF-8,%3Csvg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"%3E%3Ctext x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="40" font-family="Arial" fill="%23000000" transform="scale(1, -1)"%3E🐈%3C/text%3E%3C/svg%3E'; 
+    var imageSize = new kakao.maps.Size(64, 64); 
 
     // 마커 생성 및 표시
     for (var i = 0; i < positions.length; i++) {
@@ -131,7 +134,5 @@
         };
     }
 </script>
-
 </body>
 </html>
-
