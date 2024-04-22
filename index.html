@@ -18,8 +18,9 @@
 
 		body{
 			margin: 0;
+            background-color: #333;
 		}
-
+        /* 헤더 스타일 */
         header {
             background-color: #333;
             color: #fff;
@@ -27,45 +28,46 @@
             text-align: center;
         }
 
-
+        /* 로고 이미지 스타일 */
         #logo {
-            width: 45px; 
-            height: auto;
+            width: 45px; /* 로고 이미지의 너비 조정 */
+            height: auto; /* 자동으로 높이 조정 */
             display: inline-block;
-            vertical-align: middle;
+            vertical-align: middle; /* 텍스트와 수직 정렬 */
 			border-radius: 15px;
 			margin-right: 6px;
         }
 
-
+        /* 제목 스타일 */
         h1 {
             display: inline-block;
             margin: 0;
-            vertical-align: middle; 
+            vertical-align: middle; /* 텍스트와 수직 정렬 */
         }
 
         #map {
             width: 100%;
-            height: 80vh;
+            height: 85vh;
         }
 
+/* 제보하기 버튼 스타일 */
+#reportButton {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    color: #333333;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        #reportButton {
-            display: block;
-            padding: 10px;
-            text-align: center;
-            background-color: #ff81f4;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
+#reportButton:hover {
+    /* 추가 효과 */
+    filter: brightness(110%);
+}
 
-        #reportButton:hover {
-            background-color: #7305a7;
-        }
     </style>
 </head>
 <body>
@@ -73,23 +75,23 @@
     <img src="./logo.jpg" alt="로고" id="logo">
     <h1>삼색이맵</h1>
 </header>
+<a href="https://forms.gle/hL1zSxwpf6m8BfBG7" id="reportButton">🐈제보하기😻</a>
 <div id="map"></div>
-<a href="https://forms.gle/hL1zSxwpf6m8BfBG7" id="reportButton">제보하기</a>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ffd2ac7b29fac35b9b16093d455e0f4"></script>
 <script>
-    var mapContainer = document.getElementById('map'); 
+    var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
 
-
+    // 지도 옵션 설정
     var mapOption = { 
-        center: new kakao.maps.LatLng(37.459257, 127.128795), 
-        level: 3 
+        center: new kakao.maps.LatLng(37.459257, 127.128795), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
     };
 
-
+    // 지도 생성
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
-
+    // 마커를 표시할 위치들
     var positions = [
         {
             latlng: new kakao.maps.LatLng(37.460862, 127.129629),
@@ -101,11 +103,11 @@
         }
     ];
 
-
+    // 마커 이미지 설정
     var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'; 
     var imageSize = new kakao.maps.Size(24, 35); 
 
-
+    // 마커 생성 및 표시
     for (var i = 0; i < positions.length; i++) {
         var marker = new kakao.maps.Marker({
             map: map,
@@ -113,16 +115,16 @@
             image: new kakao.maps.MarkerImage(imageSrc, imageSize)
         });
 
-
+        // 인포윈도우 생성
         var infowindow = new kakao.maps.InfoWindow({
             content: positions[i].content,
         });
 
-
+        // 마커에 클릭 이벤트 등록
         kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
     }
 
-
+    // 클릭 이벤트 핸들러 함수
     function makeClickListener(map, marker, infowindow) {
         return function() {
             infowindow.open(map, marker);
