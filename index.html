@@ -30,7 +30,7 @@
 			margin: 0;
             background-color: #333;
 		}
-        /* 헤더 스타일 */
+
         header {
             background-color: #333;
             color: #fff;
@@ -38,21 +38,21 @@
             text-align: center;
         }
 
-        /* 로고 이미지 스타일 */
+
         #logo {
-            width: 45px; /* 로고 이미지의 너비 조정 */
-            height: auto; /* 자동으로 높이 조정 */
+            width: 45px;
+            height: auto;
             display: inline-block;
-            vertical-align: middle; /* 텍스트와 수직 정렬 */
+            vertical-align: middle;
 			border-radius: 15px;
 			margin-right: 6px;
         }
 
-        /* 제목 스타일 */
+
         h1 {
             display: inline-block;
             margin: 0;
-            vertical-align: middle; /* 텍스트와 수직 정렬 */
+            vertical-align: middle; 
         }
 
         #map {
@@ -60,7 +60,6 @@
             height: 80vh;
         }
 
-        /* 제보하기 버튼 스타일 */
         #reportButton {
             display: block;
             padding: 10px;
@@ -73,7 +72,6 @@
         }
 
         #reportButton:hover {
-            /* 추가 효과 */
             filter: brightness(110%);
         }
 
@@ -87,14 +85,17 @@
     <img src="./logo.jpg" alt="로고" id="logo">
     <h1>삼색이맵</h1>
 </header>
-<a href="https://forms.gle/hL1zSxwpf6m8BfBG7" id="reportButton">🐈제보하기😻</a>
+<a href="#" id="reportButton">🐈제보하기😻</a>
 <div id="map"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ffd2ac7b29fac35b9b16093d455e0f4"></script>
 <script>
-    var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+    document.getElementById("reportButton").addEventListener("click", function(event) {
+        event.preventDefault();
+        alert("현재는 제보를 받고 있지 않습니다!");
+    });
+    var mapContainer = document.getElementById('map');
 
-    // 지도 옵션 설정
     var mapOption = { 
         center: new kakao.maps.LatLng(37.459257, 127.128795), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
@@ -107,11 +108,11 @@
     var positions = [
         {
             latlng: new kakao.maps.LatLng(37.460862, 127.129629),
-            content: '<div style="padding:5px;">04/18<br>10호관 샛길</div>'
+            content: '<div style="padding:5px;">24/04/18<br>10호관 샛길</div>'
         },
         {
             latlng: new kakao.maps.LatLng(37.458012, 127.127756),
-            content: '<div style="padding:5px;">03/18<br>기숙사 근처</div>'
+            content: '<div style="padding:5px;">24/03/18<br>기숙사 근처</div>'
         }
     ];
 
